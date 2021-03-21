@@ -45,7 +45,7 @@ namespace HealthCompApi.Controllers
         {
             var data = await customerDataService.AddAsync(customer);
 
-            if (!modelState.IsValid)
+            if (modelState != null && !modelState.IsValid)
             {
                 return BadRequest(modelState["error"].Errors[0]);
             }
@@ -54,17 +54,28 @@ namespace HealthCompApi.Controllers
 
         // PUT api/<CustomersController>
         [HttpPut]
-        [Authorize]
-        public async Task<IActionResult> Update([FromBody] Customer customer)
+//        [Authorize]
+        //public async Task<IActionResult> Update([FromBody] Customer customer)
+        //{
+        //    var data = await customerDataService.UpdateAsync(customer);
+        //    if (!modelState.IsValid)
+        //    {
+        //        return BadRequest(modelState["error"].Errors[0]);
+        //    }
+
+        //    return Ok(data);
+        //}
+        public IActionResult Update([FromBody] Customer customer)
         {
-            var data = await customerDataService.UpdateAsync(customer);
-            if (!modelState.IsValid)
+            var data = customerDataService.Update(customer);
+            if (modelState != null && !modelState.IsValid)
             {
                 return BadRequest(modelState["error"].Errors[0]);
             }
 
             return Ok(data);
         }
+
 
         // DELETE api/<CustomersController>/5
         [HttpDelete("{id}")]

@@ -69,5 +69,16 @@ namespace DataAccess.Repositories
                 return result;
             }
         }
+        public int Update(Customer entity)
+        {
+            entity.ModifiedOn = DateTime.Now;
+            var sql = "UPDATE Customers SET Name = @Name, Description = @Description, ModifiedOn = @ModifiedOn  WHERE Id = @Id";
+            using (var connection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            {
+                connection.Open();
+                var result = connection.Execute(sql, entity);
+                return result;
+            }
+        }
     }
 }

@@ -56,6 +56,17 @@ namespace CustomerDataService
             var data = await unitOfWork.Customers.UpdateAsync(customer);
             return data;
         }
+        public int Update(Customer customer)
+        {
+            //if (CheckNameDuplicate(customer.Id, customer.Name))
+            //{
+            //    Controller.modelState.AddModelError("error", "name duplicated");
+            //    return -1;
+            //}
+
+            var data = unitOfWork.Customers.Update(customer);
+            return data;
+        }
 
         private async Task<bool> CheckNameDuplicate(int id, string name)
         {

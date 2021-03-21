@@ -13,6 +13,7 @@ namespace CustomerDataService.Interfaces
         Task<T> GetByIdAsync(int id);
         Task<int> AddAsync(Customer customer);
         Task<int> UpdateAsync(Customer customer);
+        int Update(Customer customer);
         Task<int> DeleteAsync(int id);
     }
 }
