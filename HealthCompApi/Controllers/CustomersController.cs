@@ -53,21 +53,11 @@ namespace HealthCompApi.Controllers
         }
 
         // PUT api/<CustomersController>
-        [HttpPut]
-//        [Authorize]
-        //public async Task<IActionResult> Update([FromBody] Customer customer)
-        //{
-        //    var data = await customerDataService.UpdateAsync(customer);
-        //    if (!modelState.IsValid)
-        //    {
-        //        return BadRequest(modelState["error"].Errors[0]);
-        //    }
-
-        //    return Ok(data);
-        //}
-        public IActionResult Update([FromBody] Customer customer)
+        [HttpPut("{id}")]
+        //        [Authorize]
+        public async Task<IActionResult> Update(int id, [FromBody] Customer customer)
         {
-            var data = customerDataService.Update(customer);
+            var data = await customerDataService.UpdateAsync(customer);
             if (modelState != null && !modelState.IsValid)
             {
                 return BadRequest(modelState["error"].Errors[0]);
@@ -75,11 +65,21 @@ namespace HealthCompApi.Controllers
 
             return Ok(data);
         }
+        //public IActionResult Update(int id, [FromBody] Customer customer)
+        //{
+        //    var data = customerDataService.Update(customer);
+        //    if (modelState != null && !modelState.IsValid)
+        //    {
+        //        return BadRequest(modelState["error"].Errors[0]);
+        //    }
+
+        //    return Ok(data);
+        //}
 
 
         // DELETE api/<CustomersController>/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = ("Admin"))]
+ //       [Authorize(Roles = ("Admin"))]
         public async Task<IActionResult> Delete(int id)
         {
             var data = await customerDataService.DeleteAsync(id);

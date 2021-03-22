@@ -38,6 +38,7 @@ export class Repository {
 
   updateCustomer(cust: Customer) {
     let data = {
+      id: cust.id,
       name: cust.name,
       description: cust.description
     };
