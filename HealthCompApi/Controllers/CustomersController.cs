@@ -54,7 +54,7 @@ namespace HealthCompApi.Controllers
 
         // PUT api/<CustomersController>
         [HttpPut("{id}")]
-        //        [Authorize]
+        [Authorize]
         public async Task<IActionResult> Update(int id, [FromBody] Customer customer)
         {
             var data = await customerDataService.UpdateAsync(customer);
@@ -79,7 +79,7 @@ namespace HealthCompApi.Controllers
 
         // DELETE api/<CustomersController>/5
         [HttpDelete("{id}")]
- //       [Authorize(Roles = ("Admin"))]
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             var data = await customerDataService.DeleteAsync(id);

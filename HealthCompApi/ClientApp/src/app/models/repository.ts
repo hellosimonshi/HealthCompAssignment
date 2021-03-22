@@ -48,6 +48,6 @@ export class Repository {
 
   deleteCustomer(id: number) {
     this.http.delete(`${customersUrl}/${id}`)
-      .subscribe(() => this.getCustomers(), err => alert("FAILED!!!\nYou need login as ADMIN !!!"));
+      .subscribe(() => this.getCustomers(), err => alert("FAILED!!!\nYou need login first !!!"));
   }
 }
