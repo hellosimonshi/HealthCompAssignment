@@ -11,6 +11,6 @@ namespace CustomerDataService
 {
     public abstract class BaseController : ControllerBase, IBaseController
     {
-        public ModelStateDictionary modelState { get; }
+        public ModelStateDictionary modelState { get; } = new ModelStateDictionary();
     }
 }

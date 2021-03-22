@@ -33,7 +33,7 @@ export class Repository {
       .subscribe(id => {
         cust.id = id;
         this.customers.push(cust);
-      }, err => alert(err +"\nFAILED!!!\nMaybe you need login as first!!!"));
+      }, err => { var t = JSON.parse(JSON.stringify(err)); t['status'] == '400' ? alert(JSON.stringify(t['error'])) : alert("\nYou need login first!!!") });
   }
 
   updateCustomer(cust: Customer) {
@@ -43,7 +43,8 @@ export class Repository {
       description: cust.description
     };
     this.http.put(`${customersUrl}/${cust.id}`, data)
-      .subscribe(() => this.getCustomers(), err => alert(err + "\nFAILED!!!\nMaybe you need login first!!!"));
+      .subscribe(() => this.getCustomers(),
+        err => { var t = JSON.parse(JSON.stringify(err)); t['status'] == '400' ? alert(JSON.stringify(t['error'])) : alert("\nYou need login first!!!") });
   }
 
   deleteCustomer(id: number) {
