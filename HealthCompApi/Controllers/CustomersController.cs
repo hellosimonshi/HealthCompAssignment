@@ -65,20 +65,10 @@ namespace HealthCompApi.Controllers
 
             return Ok(data);
         }
-        //public IActionResult Update(int id, [FromBody] Customer customer)
-        //{
-        //    var data = customerDataService.Update(customer);
-        //    if (modelState != null && !modelState.IsValid)
-        //    {
-        //        return BadRequest(modelState["error"].Errors[0]);
-        //    }
-
-        //    return Ok(data);
-        //}
-
 
         // DELETE api/<CustomersController>/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
