@@ -15,6 +15,10 @@ using DataAccess;
 using Microsoft.OpenApi.Models;
 using System;
 using CustomerDataService;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using HealthCompApi.Services;
 
 namespace HealthCompApi
 {
@@ -39,6 +43,7 @@ namespace HealthCompApi
             services.AddDataAccess();
             services.AddServices();
 
+
             services.AddDefaultIdentity<ApplicationUser>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = true;
@@ -51,6 +56,7 @@ namespace HealthCompApi
             })
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
+ //           .AddClaimsPrincipalFactory<ClaimsFactory>();
 
             services.AddIdentityServer()
                 .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();

@@ -9,7 +9,7 @@ namespace DataAccess
         public static void AddDataAccess(this IServiceCollection services)
         {
             services.AddTransient<ICustomerRepository, CustomerRepository>();
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 }

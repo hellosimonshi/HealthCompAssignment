@@ -68,7 +68,7 @@ namespace HealthCompApi.Controllers
 
         // DELETE api/<CustomersController>/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
+ //       [Authorize(Roles = "Admin")]
         [Authorize]
         public async Task<IActionResult> Delete(int id)
         {

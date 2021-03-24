@@ -1,11 +1,13 @@
 <h3 class="text-center">Customer Management</h3>
 <table *ngIf="tableMode; else create" class="table table-sm table-striped">
   <tbody>
-    <tr><th>ID</th><th>Name</th><th>Discription</th><th></th></tr>
+    <!--<tr><th>ID</th><th>Name</th><th>Discription</th><th></th></tr>-->
+    <tr><th>Name</th><th>Discription</th><th></th></tr>
+
     <tr *ngFor="let cust of customers">
       <ng-template [ngIf]="customer?.id != cust.id"
                    [ngIfElse]="edit">
-        <td>{{cust.id}}</td>
+        <!--<td>{{cust.id}}</td>-->
         <td>{{cust.name}}</td>
         <td>{{cust.description}}</td>
         <td>

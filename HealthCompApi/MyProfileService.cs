@@ -8,7 +8,8 @@ namespace HealthCompApi
     public class MyProfileService : IProfileService
     {
         public MyProfileService()
-        { }
+        {
+        }
 
         public Task GetProfileDataAsync(ProfileDataRequestContext context)
         {
